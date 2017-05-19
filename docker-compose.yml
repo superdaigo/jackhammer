@@ -1,8 +1,4 @@
 version: '3'
-volumes:
-  # We'll define a volume that will store the data from the mysql databases:
-  mysql-data:
-    driver: local
 services:
  mysqldb:
    image: mysql
@@ -15,7 +11,7 @@ services:
    ports:
      - "3306:3306"
    volumes: 
-      - mysql-data:/usr/local/bin/mysql
+      - ./mysql:/var/lib/mysql
    restart: always
    healthcheck:
      test: "nc -z localhost 3306"
